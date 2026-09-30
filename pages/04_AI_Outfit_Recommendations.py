@@ -160,11 +160,18 @@ else:
                 item = outfit["items"][cat]
                 with cols_grid[c_idx]:
                     is_in_cart = st.session_state.cart_items.get(cat, {}).get("item_id") == item["item_id"]
+                    
+                    img_url = ""
+                    if cat == "Top": img_url = "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80"
+                    elif cat == "Bottom": img_url = "https://images.unsplash.com/photo-1542272454315-4c01d71de619?w=400&q=80"
+                    elif cat == "Shoes": img_url = "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&q=80"
+                    else: img_url = "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80"
+
                     st.markdown(
                         f"""
                         <div class="product-card" style="margin-bottom:1.1rem;">
                             <div class="product-image-container">
-                                <img src="{item.get('image', '')}" alt="{item['item_name']}"/>
+                                <img src="{img_url}" alt="{item['item_name']}"/>
                                 <div class="platform-badge">{item.get('category', '')}</div>
                             </div>
                             <div class="product-info">
